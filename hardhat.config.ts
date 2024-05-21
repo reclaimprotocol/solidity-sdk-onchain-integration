@@ -81,6 +81,10 @@ const config: HardhatUserConfig = {
       url: "https://pool.arkhia.io/hedera/testnet/json-rpc/v1/" + HEDERA_API_KEY,
       accounts: HEDERA_TESTNET_OPERATOR_KEY ? [HEDERA_TESTNET_OPERATOR_KEY]: [],
     },
+    'hedera-mainnet': {
+      url: "https://pool.arkhia.io/hedera/mainnet/json-rpc/v1/" + HEDERA_API_KEY,
+      accounts: HEDERA_TESTNET_OPERATOR_KEY ? [HEDERA_TESTNET_OPERATOR_KEY]: [],
+    },
     'avalanche-mainnet': {
       url: 'https://api.avax.network/ext/bc/C/rpc',
       accounts: PRIVATE_KEY ? [PRIVATE_KEY]: [],

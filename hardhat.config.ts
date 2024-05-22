@@ -10,7 +10,7 @@ import 'solidity-coverage'
 import './tasks'
 // import "@nomicfoundation/hardhat-verify";
 
-const { PRIVATE_KEY, HEDERA_TESTNET_OPERATOR_KEY, HEDERA_API_KEY, ALCHEMY_API_KEY, NETWORK, INFURA_API_KEY, PROVIDER } =
+const { PRIVATE_KEY, HEDERA_OPERATOR_KEY, HEDERA_API_KEY, ALCHEMY_API_KEY, NETWORK, INFURA_API_KEY, PROVIDER } =
   process.env
 const hasCustomNetwork = NETWORK && NETWORK !== 'hardhat'
 const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY || ''
@@ -79,11 +79,11 @@ const config: HardhatUserConfig = {
     },
     'hedera-testnet': {
       url: "https://pool.arkhia.io/hedera/testnet/json-rpc/v1/" + HEDERA_API_KEY,
-      accounts: HEDERA_TESTNET_OPERATOR_KEY ? [HEDERA_TESTNET_OPERATOR_KEY]: [],
+      accounts: HEDERA_OPERATOR_KEY ? [HEDERA_OPERATOR_KEY]: [],
     },
     'hedera-mainnet': {
       url: "https://pool.arkhia.io/hedera/mainnet/json-rpc/v1/" + HEDERA_API_KEY,
-      accounts: HEDERA_TESTNET_OPERATOR_KEY ? [HEDERA_TESTNET_OPERATOR_KEY]: [],
+      accounts: HEDERA_OPERATOR_KEY ? [HEDERA_OPERATOR_KEY]: [],
     },
     'avalanche-mainnet': {
       url: 'https://api.avax.network/ext/bc/C/rpc',

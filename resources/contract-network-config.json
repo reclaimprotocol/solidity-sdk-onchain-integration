@@ -291,7 +291,7 @@
       }
     },
     "hedera-mainnet": {
-      "Reclaim": { "address": "0x9e78072326fc5ad7bf7d08de056fa4630926846d" }
+      "Reclaim": { "address": "0x2a0a2c9f1f2cc87c6f167528cabadde25bbe170d" }
     },
     "hedera-testnet": {
       "IncrementalBinaryTree": { "address": "", "explorer": "" },

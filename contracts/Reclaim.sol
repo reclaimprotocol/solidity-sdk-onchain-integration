@@ -1,9 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.4;
 
-import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
-import "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol";
-import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
 import "./lib/SemaphoreInterface.sol";
 import "./lib/Claims.sol";
 import "./lib/Random.sol";
@@ -13,7 +11,7 @@ import "./lib/BytesUtils.sol";
 /**
  * Reclaim Beacon contract
  */
-contract Reclaim is Initializable, UUPSUpgradeable, OwnableUpgradeable {
+contract Reclaim is Ownable {
 	struct Witness {
 		/** ETH address of the witness */
 		address addr;
@@ -70,24 +68,10 @@ contract Reclaim is Initializable, UUPSUpgradeable, OwnableUpgradeable {
 		locked = false;
 	}
 
-	/**
-	 * @notice Calls initialize on the base contracts
-	 *
-	 * @dev This acts as a constructor for the upgradeable proxy contract
-	 */
-	function initialize() external initializer {
-		__Ownable_init();
+	constructor() {
 		epochDurationS = 1 days;
 		currentEpoch = 0;
 	}
-
-	/**
-	 * @notice Override of UUPSUpgradeable virtual function
-	 *
-	 * @dev Function that should revert when `msg.sender` is not authorized to upgrade the contract. Called by
-	 * {upgradeTo} and {upgradeToAndCall}.
-	 */
-	function _authorizeUpgrade(address) internal view override onlyOwner {}
 
 	// epoch functions ---
 

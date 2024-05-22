@@ -9,18 +9,19 @@ task('deploy').setAction(async ({}, { ethers, network, upgrades }) => {
   const networkDetails = content['networks'][network.name]
 
   const ReclaimFactory = await ethers.getContractFactory('Reclaim')
-  const Reclaim = await upgrades.deployProxy(
-    ReclaimFactory,
-    [],
-    {
-      kind: 'uups',
-      initializer: 'initialize'
-    }
-  )
+  const Reclaim = await ReclaimFactory.deploy();
+  // const Reclaim = await upgrades.deployProxy(
+  //   ReclaimFactory,
+  //   [],
+  //   {
+  //     kind: 'uups',
+  //     initializer: 'initialize'
+  //   }
+  // )
   const tx = await Reclaim.deployed()
   const res = await tx.deployTransaction.wait()
 
-  console.log('Reclaim Implementation deployed to:', res.events[0].args[0])
+  //console.log('Reclaim Implementation deployed to:', res.events[0].args[0])
   console.log('Reclaim Proxy deployed to: ', Reclaim.address)
 
   

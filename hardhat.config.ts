@@ -1,3 +1,5 @@
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
 import dotenv from 'dotenv'
 dotenv.config()
 
@@ -249,4 +251,4 @@ const config: HardhatUserConfig = {
   }
 }
 
-export default config
+export default config;
